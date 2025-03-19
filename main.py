@@ -60,7 +60,7 @@ class NeuralNetwork:
             inputs = layer.forward(inputs)
         return inputs
 
-    def backward(self, inputs, target, learning_rate=0.5):
+    def backward(self, inputs, target, learning_rate=0.3):
         output = self.forward(inputs)
         errors = [target[i] - output[i] for i in range(len(target))]
 
@@ -77,7 +77,7 @@ class NeuralNetwork:
                     pass
 
 # Experimental code
-layer_sizes = [9, 8, 6, 4, 3]
+layer_sizes = [9, 8, 3]
 
 # Example training data
 training_data = [
