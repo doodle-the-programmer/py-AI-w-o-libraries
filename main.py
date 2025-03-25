@@ -1,4 +1,4 @@
-import tkinter as tk
+#import tkinter as tk
 import random
 import math
 
@@ -123,7 +123,31 @@ for epoch in range(1000):
                 best_error = error
     print(f"Epoch {epoch}, Best Error: {best_error}")
 
-# Tkinter setup
+#Added for testing purposes. I am unsure whether it works.
+try:
+    while True:
+        uinput = []
+        for i in range(layer_sizes[0]):
+            uinput.append(int(input(f"Enter 1 for black, 0 for white, on the square nº{9-i}: ")))
+        output = ensemble.forward(uinput)
+        for i in range(len(output)):
+            if output[i] == max(output):
+                if i == 0:
+                    prediction="L"
+                elif i == 1:
+                    prediction="O"
+                elif i == 2:
+                    prediction=">"
+                break
+        print(f"Predicted shape: {prediction}, with {max(output)*100:.2f}% certainty.")
+        #print the square the input data represents
+        for i in range(3):
+            print(uinput[i*3:i*3+3])
+except error:
+    print(f"The error {error} has ocurred. Exiting the program.")
+#Testing code ends here
+
+""" # Tkinter setup
 class ShapeDrawer(tk.Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -173,4 +197,4 @@ class ShapeDrawer(tk.Tk):
 
 
 app = ShapeDrawer()
-app.mainloop()
+app.mainloop() """
